@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.platform.user.entity.User">
+	<sql id="querySql">
+		select * from mc_user
+		<trim prefix="where" prefixOverrides="OR | AND">
+			1=1
+			<if test="id != null">and id = #{id}</if>
+			<if test="realName != null">and realName = #{realName}</if>
+			<if test="password != null">and password = #{password}</if>
+			<if test="loginname != null">and loginname = #{loginname}</if>
+			<if test="locked != null">and locked = #{locked}</if>
+		</trim>
+	</sql>
+
+	<!-- 查询所有的结果 -->
+	<select id="queryList" resultType="org.spring.platform.user.entity.User">
+		<include refid="querySql" />
+	</select>
+
+	<!-- 根据条件查询结果 -->
+	<select id="queryListByMap" parameterType="java.util.Map" resultType="org.spring.platform.user.entity.User">
+		<include refid="querySql" />
+	</select>
+	<!-- 查询分页 -->
+	<select id="queryPageByMap" parameterType="java.util.Map" resultType="org.spring.platform.user.entity.User">
+		select * from (<include refid="querySql" />) as t limit #{startRow},#{size}
+	</select>
+	
+	<!-- 查询一条记录 -->
+	<select id="get" parameterType="java.util.Map" resultType="org.spring.platform.user.entity.User">
+		<include refid="querySql" />
+	</select>
+	
+	<select id="findByUsername" parameterType="java.util.Map" resultType="org.spring.platform.user.entity.User">
+		select * from mc_user where loginname = #{loginname}
+	</select>
+	
+	<insert id="save" parameterType="org.spring.platform.user.entity.User" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+		insert into mc_user(realName,password,loginname,locked)
+		values(#{realName},#{password},#{loginname},#{locked})
+	</insert>
+</mapper>

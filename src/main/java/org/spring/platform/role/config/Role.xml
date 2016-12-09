@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.spring.platform.role.entity.Role">
+	<sql id="querySql">
+		select * from mc_role
+		<trim prefix="where" prefixOverrides="OR | AND">
+			1=1
+			<if test="id != null">and id = ${id}</if>
+			<if test="name != null">and name = ${name}</if>
+			<if test="permission != null">and permission = ${permission}</if>
+		</trim>
+	</sql>
+
+	<!-- 查询所有的结果 -->
+	<select id="queryList" resultType="org.spring.platform.role.entity.Role">
+		<include refid="querySql" />
+	</select>
+
+	<!-- 根据条件查询结果 -->
+	<select id="queryListByMap" parameterType="java.util.Map"
+		resultType="org.spring.platform.role.entity.Role">
+		<include refid="querySql" />
+	</select>
+</mapper>
