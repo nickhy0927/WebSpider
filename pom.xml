@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.3</version>
+			<version>2.7</version>
 		</dependency>
 		<dependency>
 			<groupId>com.thetransactioncompany</groupId>
@@ -298,7 +298,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- spring -->
@@ -371,6 +371,49 @@
 						<target>${jdk.version}</target>
 						<showWarnings>true</showWarnings>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>9.3.7.v20160115</version>
+					<configuration>
+						<webApp>
+							<contextPath>/Webspider</contextPath>
+						</webApp>
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<stopPort>9899</stopPort>
+						<stopKey>foo</stopKey>
+						<stopWait>10</stopWait>
+						<systemProperties>
+							<systemProperty>
+								<name>tapestry.execution-mode</name>
+								<value>development</value>
+							</systemProperty>
+							<systemProperty>
+								<name>jetty.port</name>
+								<value>9090</value>
+							</systemProperty>
+						</systemProperties>
+					</configuration>
+					<executions>
+						<execution>
+							<id>start-jetty</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<daemon>true</daemon>
+							</configuration>
+						</execution>
+						<execution>
+							<id>stop-jetty</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>stop</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
