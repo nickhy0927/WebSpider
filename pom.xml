@@ -25,6 +25,12 @@
 		<shiro.version>1.2.0</shiro.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -303,9 +309,9 @@
 		</dependency>
 		<!-- spring -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>4.1.6.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.1.6.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
