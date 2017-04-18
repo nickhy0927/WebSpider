@@ -46,16 +46,16 @@
         <property name="arguments" ref="securityManager"/>
     </bean>
     <!-- 基于Form表单的身份验证过滤器 -->
-    <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
+    <bean id="formAuthenticationFilter" class="org.spring.common.shiro.form.ShiroFormAuthenticationFilter">
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
-        <property name="loginUrl" value="/login.jsp"/>
+        <property name="loginUrl" value="/forwardLogin"/>
     </bean>
 
     <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.jsp"/>
+        <property name="loginUrl" value="/forwardLogin"/>
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
         <property name="filters">
             <util:map>
@@ -66,6 +66,7 @@
             <value>
                 /index.jsp = anon
                 /app/** = anon
+                /forwardLogin = anon
                 /unauthorized.jsp = anon
                 /login.jsp = anon
                 /logout = logout

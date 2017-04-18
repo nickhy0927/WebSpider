@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Scope("prototype")
@@ -54,7 +55,6 @@ public class UserController {
 		}
 	}
 
-	
 	@RequestMapping(value = "/app/loginByJsp")
 	public void loginByJsp(HttpServletRequest request, HttpServletResponse response) {
 		MessageObject messageObject = MessageObject.getInstance();
@@ -79,7 +79,7 @@ public class UserController {
 			}
 		}
 	}
-	
+
 	@RequestMapping(value = "/app/register")
 	public void register(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> properties = RequestData.getRequestDataToMap(request);
@@ -103,9 +103,9 @@ public class UserController {
 			}
 		}
 	}
-	
+
 	@RequestMapping(value = "/app/getUserInfoList")
-	public void getUserInfoList(HttpServletRequest request,HttpServletResponse response) {
+	public void getUserInfoList(HttpServletRequest request, HttpServletResponse response) {
 		List<User> queryList = userService.queryList();
 		MessageObject messageObject = MessageObject.getInstance();
 		messageObject.setObject(queryList);
@@ -115,14 +115,21 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value = "/app/userAdd")
 	public String userAdd() {
 		return "platform/users/userAdd";
 	}
-	
+
 	@RequestMapping(value = "/app/userLogin")
 	public String userLogin() {
 		return "platform/users/userLogin";
+	}
+
+	@RequestMapping(value = "/forwardLogin")
+	public ModelAndView forwardLogin(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView("login");
+		view.addObject("sessionid", request.getSession().getId());
+		return view;
 	}
 }
