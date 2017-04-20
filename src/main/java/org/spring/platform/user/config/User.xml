@@ -9,7 +9,7 @@
 			<if test="id != null">and id = #{id}</if>
 			<if test="realName != null">and realName = #{realName}</if>
 			<if test="password != null">and password = #{password}</if>
-			<if test="loginname != null">and loginname = #{loginname}</if>
+			<if test="loginName != null">and loginName = #{loginName}</if>
 			<if test="locked != null">and locked = #{locked}</if>
 		</trim>
 	</sql>
@@ -38,7 +38,7 @@
 	</select>
 	
 	<insert id="save" parameterType="org.spring.platform.user.entity.User" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into mc_user(realName,password,loginname,locked)
-		values(#{realName},#{password},#{loginname},#{locked})
+		insert into mc_user(realName,password,loginName,locked)
+		values(#{realName},#{password},#{loginName},#{locked})
 	</insert>
 </mapper>

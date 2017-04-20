@@ -1,18 +1,11 @@
 package org.spring.platform.role.entity;
 
-public class Role {
+import org.spring.platform.utils.IdEntity;
 
-	private Long id;
+public class Role extends IdEntity{
+
 	private String name;
 	private String permission;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

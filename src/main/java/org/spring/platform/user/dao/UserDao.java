@@ -13,10 +13,9 @@ public interface UserDao extends CommonDao<User, Long>{
 	 * @time 2016年11月24日 下午2:02:36
 	 * @方法注释：查询用户
 	 * @param statement
-	 * @param username
 	 * @return
 	 */
-	User findByUsername(String statement, Map<String, Object> pramasMap);
+	User findByUsername(String statement, Map<String, Object> paramsMap);
 
 	Set<String> findRoles(String statement, Long userId);
 

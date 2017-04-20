@@ -1,56 +1,61 @@
 package org.spring.platform.user.entity;
 
-public class User {
+import org.spring.platform.utils.IdEntity;
 
-	private Long id;
-	private String realName;
-	private String password;
-	private String loginname;
-	private Boolean locked = Boolean.FALSE;
+public class User extends IdEntity {
 
-	public Long getId() {
-		return id;
-	}
+    private String realName;
+    private String password;
+    private String loginName;
+    private String email;
+    private String phone;
+    private Boolean locked = Boolean.FALSE;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getRealName() {
+        return realName;
+    }
 
-	public String getRealName() {
-		return realName;
-	}
-	
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
-	public Boolean getLocked() {
-		return locked;
-	}
+    public Boolean getLocked() {
+        return locked;
+    }
 
-	public void setLocked(Boolean locked) {
-		this.locked = locked;
-	}
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
 
-	public String getLoginname() {
-		return loginname;
-	}
+    public String getLoginName() {
+        return loginName;
+    }
 
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
-	}
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", realName=" + realName + ", password=" + password + ", loginname=" + loginname
-				+ ", locked=" + locked + "]";
-	}
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

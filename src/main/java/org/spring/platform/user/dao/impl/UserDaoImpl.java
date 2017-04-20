@@ -1,4 +1,4 @@
-package org.spring.platform.user.dao;
+package org.spring.platform.user.dao.impl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.spring.common.dao.impl.CommonDaoImpl;
+import org.spring.platform.user.dao.UserDao;
 import org.spring.platform.user.entity.User;
 import org.springframework.stereotype.Repository;
 
