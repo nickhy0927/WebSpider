@@ -25,7 +25,7 @@ public class UserDaoImpl extends CommonDaoImpl<User, Long> implements UserDao {
 	 * @see org.spring.platform.user.dao.UserDao#findRoles(java.lang.String, java.lang.Long)
 	 */
 	@Override
-	public Set<String> findRoles(String statement, Long userId) {
+	public Set<String> findRoles(String statement, String userId) {
 		List<String> list = this.getSqlSession().selectList(statement, userId);
 		Set<String> roles = new HashSet<String>();
 		roles.addAll(list);
@@ -36,7 +36,7 @@ public class UserDaoImpl extends CommonDaoImpl<User, Long> implements UserDao {
 	 * @see org.spring.platform.user.dao.UserDao#findPermissions(java.lang.String, java.lang.Long)
 	 */
 	@Override
-	public Set<String> findPermissions(String statement, Long userId) {
+	public Set<String> findPermissions(String statement, String userId) {
 		List<String> list = this.getSqlSession().selectList(statement, userId);
 		Set<String> permissions = new HashSet<String>();
 		permissions.addAll(list);

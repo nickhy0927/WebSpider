@@ -79,7 +79,7 @@ public class UserController {
     @RequestMapping(value = "/forwardLogin")
     public ModelAndView forwardLogin(HttpServletRequest request) {
         ModelAndView view = new ModelAndView("login");
-        view.addObject("sessionId", request.getSession().getId());
+//        view.addObject("sessionId", request.getSession().getId());
         return view;
     }
 }

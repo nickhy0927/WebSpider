@@ -29,7 +29,7 @@ public class StartTest {
 			user.setLocked(Boolean.FALSE);
 			Integer n = (int) Math.floor(Math.random() * 1000000000);
 			String username = String.valueOf(n);
-			user.setLoginname(username);
+			user.setLoginName(username);
 			user.setPassword(username);
 			user.setRealName(username);
 			user = EndecryptUtils.endecrptPassword(user);

@@ -77,7 +77,7 @@ public class EndecryptUtils {
 	}
 
 	public static User endecrptPassword(User user) {
-		String username = user.getLoginname();
+		String username = user.getLoginName();
 		String password = user.getPassword();
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(username), "username不能为空");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(password), "password不能为空");

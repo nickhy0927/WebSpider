@@ -9,7 +9,6 @@ import org.spring.common.service.CommonService;
 import org.spring.common.utils.EndecryptUtils;
 import org.spring.platform.user.dao.UserDao;
 import org.spring.platform.user.entity.User;
-import org.spring.platform.utils.IdEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,11 +53,11 @@ public class UserService extends CommonService<User, Long> {
 		return userDao.get(paramsMap, "org.spring.platform.user.entity.User.get");
 	}
 
-	public Set<String> findRoles(Long userId) {
+	public Set<String> findRoles(String userId) {
 		return userDao.findRoles("org.spring.platform.user.entity.User.findRoles", userId);
 	}
 
-	public Set<String> findPermissions(Long userId) {
+	public Set<String> findPermissions(String userId) {
 		return userDao.findPermissions("org.spring.platform.user.entity.User.findPermissions", userId);
 	}
 

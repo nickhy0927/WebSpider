@@ -17,8 +17,8 @@ public interface UserDao extends CommonDao<User, Long>{
 	 */
 	User findByUsername(String statement, Map<String, Object> paramsMap);
 
-	Set<String> findRoles(String statement, Long userId);
+	Set<String> findRoles(String statement, String userId);
 
-	Set<String> findPermissions(String statement, Long userId);
+	Set<String> findPermissions(String statement, String userId);
 
 }

@@ -20,6 +20,10 @@
 	
 	<bean id="springContextHolder" class="org.spring.common.utils.SpringContextHolder" lazy-init="false"/>
 	
+	<bean class="org.spring.common.annotation.scan.ValidationAnalysis" init-method="init">
+		<property name="packageName" value="org.spring.platform" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	<!-- 将多个配置文件位置放到列表中 -->
 	<bean id="propertyResources" class="java.util.ArrayList">
 		<constructor-arg>

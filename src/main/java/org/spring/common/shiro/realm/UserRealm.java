@@ -29,7 +29,10 @@ public class UserRealm extends AuthorizingRealm {
 
 	@Autowired
 	private UserService userService;
-
+	
+	private String username;
+	private String password;
+	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		User user = (User) principals.getPrimaryPrincipal();
@@ -44,6 +47,7 @@ public class UserRealm extends AuthorizingRealm {
 		String username = (String) token.getPrincipal();
 		Map<String, Object> pramasMap = new HashMap<String, Object>();
 		pramasMap.put("loginname", username);
+		System.out.println(this.username);
 		String password = new String((char[]) token.getCredentials());
 		User user = userService.findByUsernameAndPassword(username, password);
 		if (user == null) 
@@ -120,5 +124,21 @@ public class UserRealm extends AuthorizingRealm {
 	public void clearAllCache() {
 		clearAllCachedAuthenticationInfo();
 		clearAllCachedAuthorizationInfo();
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
