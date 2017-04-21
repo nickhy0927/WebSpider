@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>测试第一个页面</title>
-</head>
-<body>
-	<h1>
-		spring 集成成功
-	</h1>
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="hy" uri="http://www.hy.include" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<hy:extends name="title">信息管理系统</hy:extends>
+<hy:extends name="css">
+    <style type="text/css"></style>
+</hy:extends>
+<hy:extends name="javascript">
+    <script type="text/javascript">
+
+    </script>
+</hy:extends>
+<hy:extends name="body">
+    <div class="container-fluid"></div>
+</hy:extends>
