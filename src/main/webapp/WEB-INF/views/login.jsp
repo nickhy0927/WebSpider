@@ -13,34 +13,37 @@
     </script>
 </hy:extends>
 <hy:extends name="body">
-    <div class="login_m">
-	    <div class="login_logo">
-	    	<img src="${ctx}/static/wopop/logo.png" width="196" height="46">
+    <form action="${ctx}/login" method="post" >
+    	<div class="login_m">
+		    <div class="login_logo">
+		    	<img src="${ctx}/static/wopop/logo.png" width="196" height="46">
+		    </div>
+		    <div class="login_boder">
+		        <div class="login_padding" id="login_model">
+		            <h2>登录账户</h2>
+		            <label>
+		                <input type="text" id="loginName" name="loginName" class="txt_input txt_input2" value="" placeholder="电话号码/邮箱/注册账号">
+		            </label>
+		            <h2>登录密码</h2>
+		            <label>
+		                <input type="password" name="password" id="password" class="txt_input" value="" placeholder="账户密码">
+		            </label>
+		            <p class="forgot" style="height: 15px;line-height: 15px;">
+		            	<span style="color:red;display: block;float:left;width: 242px;text-align: center;height: 15px;line-height: 15px;">${message}</span>
+		            	<a id="iforget" href="javascript:void(0);" style="float:right;display:block;height: 15px;line-height: 15px;">忘记密码?</a>
+		            </p>
+		            <div class="rem_sub">
+		                <div class="rem_sub_l">
+		                    <input type="checkbox" name="checkbox" id="save_me" style="vertical-align: middle;">
+		                    <label for="save_me">记住我</label>
+		                </div>
+		                <label>
+		                    <input type="submit" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;">
+		                </label>
+		            </div>
+		        </div>
+		    </div>
 	    </div>
-	    <div class="login_boder">
-	        <div class="login_padding" id="login_model">
-	            <h2>登录账户</h2>
-	            <label>
-	                <input type="text" id="loginName" name="loginName" class="txt_input txt_input2" value="" placeholder="电话号码/邮箱/注册账号">
-	            </label>
-	            <h2>登录密码</h2>
-	            <label>
-	                <input type="password" name="password" id="password" class="txt_input" value="" placeholder="账户密码">
-	            </label>
-	            <p class="forgot">
-	            	<a id="iforget" href="javascript:void(0);">忘记密码?</a>
-	            </p>
-	            <div class="rem_sub">
-	                <div class="rem_sub_l">
-	                    <input type="checkbox" name="checkbox" id="save_me" style="vertical-align: middle;">
-	                    <label for="save_me">记住我</label>
-	                </div>
-	                <label>
-	                    <input type="submit" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;">
-	                </label>
-	            </div>
-	        </div>
-	    </div>
-    </div>
+    </form>
 </hy:extends>
 <jsp:include page="/page/basepage.jsp"></jsp:include>

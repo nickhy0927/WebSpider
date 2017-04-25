@@ -81,8 +81,8 @@ public class EndecryptUtils {
 		String password = user.getPassword();
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(username), "username不能为空");
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(password), "password不能为空");
-		String password_cipherText = new Md5Hash(password, username + EndecryptUtils.salt, 2).toHex();
-//		System.out.println("原始密码：" + password + ",加密的盐：" + EndecryptUtils.salt + "，加密后的密码：" + password_cipherText);
+		String password_cipherText = new Md5Hash(password, username + EndecryptUtils.getSalt(), 2).toHex();
+		System.out.println("原始密码：" + password + ",加密的盐：" + EndecryptUtils.salt + "，加密后的密码：" + password_cipherText);
 		user.setPassword(password_cipherText.toUpperCase());
 		return user;
 	}

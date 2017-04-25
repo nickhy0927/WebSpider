@@ -65,7 +65,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /index.jsp = anon
-                /app/** = anon
+                /login = anon
                 /static/** = anon
                 /forwardLogin = anon
                 /unauthorized.jsp = anon
