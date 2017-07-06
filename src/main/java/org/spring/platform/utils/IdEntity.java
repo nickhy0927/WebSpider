@@ -1,6 +1,7 @@
 package org.spring.platform.utils;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.spring.common.annotation.Column;
 import org.spring.common.annotation.InheritedAnnotation;
@@ -11,8 +12,8 @@ import org.spring.common.annotation.InheritedAnnotation;
 @InheritedAnnotation
 public class IdEntity {
 
-	@Column(name = "id", length = 30, comment = "主键ID", idType = "native", notNull = true)
-	private String id;
+	@Column(name = "id", length = 50, comment = "主键ID", idType = "native", notNull = true)
+	private String id = UUID.randomUUID().toString().toUpperCase().replace("-", "");
 
 	@Column(name = "createTime", comment = "创建时间", notNull = true)
 	private Date createTime = new Date();

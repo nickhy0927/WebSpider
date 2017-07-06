@@ -20,7 +20,10 @@
 	<logger name="org.springframework" level="WARN" />
 	<!-- project default level -->
 	<logger name="com.iss" level="DEBUG" />
-	<root level="info">
+	<logger name="com.iss" level="DEBUG" />
+	<logger name="com.ibatis" level="debug" />
+    <logger name="org.mybatis.spring.SqlSessionTemplate" level="debug" />
+	<root level="DEBUG">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
 	</root>

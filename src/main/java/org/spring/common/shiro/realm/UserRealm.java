@@ -68,9 +68,8 @@ public class UserRealm extends AuthorizingRealm {
 		if (Boolean.TRUE.equals(user.getLocked()))
 			throw new LockedAccountException(); // 帐号锁定
 		String password_cipherText = new Md5Hash(password, username + EndecryptUtils.getSalt(), 2).toHex();
-		if (!password_cipherText.equals(password)) // 密码不正确
+		if (!user.getPassword().equals(password_cipherText.toUpperCase())) // 密码不正确
 			throw new IncorrectCredentialsException("用户密码错误");
-
 		// 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, // 用户名
 				user.getPassword(), // 密码
