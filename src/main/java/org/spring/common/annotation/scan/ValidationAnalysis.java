@@ -124,7 +124,7 @@ public class ValidationAnalysis {
 	 */
 	private void createSql(Connection connection, StringBuffer stringBuffer) {
 		try {
-			logger.info(stringBuffer.toString());
+			logger.debug(stringBuffer.toString());
 			PreparedStatement prepareStatement = connection.prepareStatement(stringBuffer.toString());
 			boolean bool = prepareStatement.execute();
 			if (bool) {
