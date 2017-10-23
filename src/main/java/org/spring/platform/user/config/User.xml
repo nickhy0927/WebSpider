@@ -34,11 +34,18 @@
 	</select>
 	
 	<select id="findByUsername" parameterType="java.util.Map" resultType="org.spring.platform.user.entity.User">
-		select * from t_p_user where loginname = #{loginname}
+		select * from t_p_user where loginname = #{loginName}
 	</select>
 	
 	<insert id="save" parameterType="org.spring.platform.user.entity.User" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
-		insert into t_p_user(realName,password,loginName,locked)
-		values(#{realName},#{password},#{loginName},#{locked})
+		insert into t_p_user(
+			id,createTime,updateTime,status,
+			realName,password,loginName,locked,
+			email,phone,borthday
+		) values(
+			#{id},#{createTime},#{updateTime},#{status},
+			#{realName},#{password},#{loginName},
+			#{locked},#{email},#{phone},#{borthday}
+		)
 	</insert>
 </mapper>

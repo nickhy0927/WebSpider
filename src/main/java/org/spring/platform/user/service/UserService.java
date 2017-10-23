@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.Assert;
 import org.spring.common.service.CommonService;
 import org.spring.common.utils.EndecryptUtils;
 import org.spring.platform.user.dao.UserDao;
@@ -23,8 +22,6 @@ public class UserService extends CommonService<User, Long> {
 	}
 
 	public User findByUsernameAndPassword(String loginName, String password) {
-		Assert.assertNotNull("loginName : " + loginName + "不能为空", loginName);
-		Assert.assertNotNull("password: " + password + "不能为空", password);
 		Map<String, Object> pramasMap = new HashMap<>();
 		pramasMap.put("loginName", loginName);
 		User user = findByUsername(pramasMap);

@@ -77,4 +77,12 @@ public class User extends IdEntity {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	
+	public Date getBorthday() {
+		return borthday;
+	}
+	
+	public void setBorthday(Date borthday) {
+		this.borthday = borthday;
+	}
 }

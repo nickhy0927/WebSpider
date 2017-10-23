@@ -1,5 +1,6 @@
 package com.spring.ibatis;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,9 @@ public class StartTest {
 			user.setLoginName(username);
 			user.setPassword(username);
 			user.setRealName(username);
+			user.setEmail("h_y_12@163.com");
+			user.setPhone("13299999999");
+			user.setBorthday(new Date());
 			user = EndecryptUtils.endecrptPassword(user);
 			user = userService.save(user);
 			System.out.println("id : " + user.getId());
